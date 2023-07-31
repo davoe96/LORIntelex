@@ -1,4 +1,6 @@
 const { init } = require('mochawesome');
+const fs = require('fs-extra');
+const path = require('path');
 
 module.exports = (on, config) => {
   // Initialize the mochawesome reporter
@@ -16,4 +18,10 @@ module.exports = (on, config) => {
         });
     });
   });
+
+  // Remove the old report directory before running new tests
+  const reportDir = path.join(config.projectRoot, 'mochawesome-report');
+  fs.removeSync(reportDir);
+
+  return config;
 };

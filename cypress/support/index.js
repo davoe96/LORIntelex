@@ -7,7 +7,7 @@ Cypress.Mochawesome.merge({
   // Report options here (optional)
 
 })
-Cypress.Commands.add('upload_file', (fileName, fileType = ' ', selector) => {
+/* Cypress.Commands.add('upload_file', (fileName, fileType = ' ', selector) => {
   cy.get(selector).then(subject => {
     cy.fixture(fileName, 'binary')
       .then(Cypress.Blob.binaryStringToBlob)
@@ -17,6 +17,6 @@ Cypress.Commands.add('upload_file', (fileName, fileType = ' ', selector) => {
         subject[0].dispatchEvent(new Event('change', event));
       })
   })
-})
+}) */
 
 
