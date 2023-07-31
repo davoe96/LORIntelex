@@ -13,6 +13,10 @@
 // https://on.cypress.io/configuration
 // ***********************************************************
 
+//Import the existing Cypress commands
+//import 'cypress-iframe';
+
+
 // Import commands.js using ES2015 syntax:
   import './commands'
 

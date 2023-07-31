@@ -1,0 +1,100 @@
+{
+  "stats": {
+    "suites": 1,
+    "tests": 1,
+    "passes": 1,
+    "pending": 0,
+    "failures": 0,
+    "start": "2023-07-28T08:32:15.995Z",
+    "end": "2023-07-28T08:33:02.647Z",
+    "duration": 46652,
+    "testsRegistered": 1,
+    "passPercent": 100,
+    "pendingPercent": 0,
+    "other": 0,
+    "hasOther": false,
+    "skipped": 0,
+    "hasSkipped": false
+  },
+  "results": [
+    {
+      "uuid": "ab62077b-c8f7-4b0c-b593-e050f02ebcc9",
+      "title": "",
+      "fullFile": "cypress/e2e/Observations/Observations Layout & Creation.spec.cy.js",
+      "file": "cypress/e2e/Observations/Observations Layout & Creation.spec.cy.js",
+      "beforeHooks": [],
+      "afterHooks": [],
+      "tests": [],
+      "suites": [
+        {
+          "uuid": "90869aa7-b21b-4f0c-bf1c-d44a4f1e1d41",
+          "title": "As a user I want to successfully navigate to the Observation functionality and validate its form and table layout",
+          "fullFile": "",
+          "file": "",
+          "beforeHooks": [],
+          "afterHooks": [],
+          "tests": [
+            {
+              "title": "Access the Work Observation and confirm expected layout of the form and table",
+              "fullTitle": "As a user I want to successfully navigate to the Observation functionality and validate its form and table layout Access the Work Observation and confirm expected layout of the form and table",
+              "timedOut": null,
+              "duration": 45401,
+              "state": "passed",
+              "speed": "slow",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "cy.contains('Observation Details').should('be.visible');\ncy.contains('Location').should('be.visible');\ncy.contains('Safe/Unsafe').should('be.visible');\ncy.contains('Observation Area').should('be.visible');\ncy.contains('Date').should('be.visible');\ncy.contains('Severity').should('be.visible');\ncy.contains('Task List').should('be.visible');\ncy.contains('Comfort Level').should('be.visible');\ncy.contains('Topic Discussed').should('be.visible');\ncy.contains('Worker Feedback').should('be.visible');\ncy.contains('Observer Feedback').should('be.visible');\ncy.contains('Follow Up').should('be.visible');\ncy.contains('Quota').should('be.visible');\ncy.contains('Private Document Attachment').should('be.visible');\ncy.contains('Attach Document').should('be.visible');\ncy.contains('Detach Document').should('be.visible');\ncy.contains('List All').should('be.visible');\ncy.contains('Attachment Name').should('be.visible');\ncy.contains('URL').should('be.visible');\ncy.get('a[href=\"/Login/LOR_AUSTest/Application/Observations/ListofWorkObservations\"]').click();\ncy.contains('Record No.').should('be.visible');\ncy.contains('Job Task').should('be.visible');\ncy.contains('Date').should('be.visible');\ncy.contains('Safe/Unsafe').should('be.visible');",
+              "err": {},
+              "uuid": "b0785f8b-cec3-4281-819b-c4f26d3fd9ec",
+              "parentUUID": "90869aa7-b21b-4f0c-bf1c-d44a4f1e1d41",
+              "isHook": false,
+              "skipped": false
+            }
+          ],
+          "suites": [],
+          "passes": [
+            "b0785f8b-cec3-4281-819b-c4f26d3fd9ec"
+          ],
+          "failures": [],
+          "pending": [],
+          "skipped": [],
+          "duration": 45401,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 2000
+        }
+      ],
+      "passes": [],
+      "failures": [],
+      "pending": [],
+      "skipped": [],
+      "duration": 0,
+      "root": true,
+      "rootEmpty": true,
+      "_timeout": 2000
+    }
+  ],
+  "meta": {
+    "mocha": {
+      "version": "7.0.1"
+    },
+    "mochawesome": {
+      "options": {
+        "quiet": false,
+        "reportFilename": "mochawesome",
+        "saveHtml": true,
+        "saveJson": true,
+        "consoleReporter": "spec",
+        "useInlineDiffs": false,
+        "code": true
+      },
+      "version": "7.1.3"
+    },
+    "marge": {
+      "options": null,
+      "version": "6.2.0"
+    }
+  }
+}
