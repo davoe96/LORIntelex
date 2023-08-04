@@ -1,6 +1,7 @@
 // cypress/support/commands.js
 import 'cypress-file-upload';
 import 'mochawesome-cypress';
+import './commands';
 
 // Optionally, you can add the following to customize the report name and other options
 Cypress.Mochawesome.merge({

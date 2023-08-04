@@ -14,9 +14,28 @@ const dropdownPage = {
    topicsDiscussedDropdown: '#TopicsDiscussed',
    followUpDropdown: '#FollowUp',
    quotaDropdown: '#Quota',
-
-  // Add more selectors for other elements on this page
+  cparttypeidDropdown: '#CPARTypeID',
+   reviewtypeDropdown: '#ReviewType',
+// Add more selectors for other elements on this page
   // dropdownName: 'uniqueSelector'
+  selectRandomReviewTypeOption() {
+    cy.get(this.reviewtypeDropdown).then(($select) => {
+      const options = $select.find('option');
+      const randomIndex = Math.floor(Math.random() * (options.length - 1)) + 1; // Exclude the first empty option
+      const randomOption = options[randomIndex];
+
+      cy.wrap($select).select(randomOption.value).should('have.value', randomOption.value);
+    });
+  },
+  selectRandomCPARTypeIDOption() {
+    cy.get(this.cparttypeidDropdown).then(($select) => {
+      const options = $select.find('option');
+      const randomIndex = Math.floor(Math.random() * (options.length - 1)) + 1; // Exclude the first empty option
+      const randomOption = options[randomIndex];
+
+      cy.wrap($select).select(randomOption.value).should('have.value', randomOption.value);
+    });
+  },
   selectRandomQuotaOption() {
     cy.get(this.quotaDropdown).then(($select) => {
       const options = $select.find('option');

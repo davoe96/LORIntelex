@@ -4,7 +4,9 @@ const datepickerPage = {
   datepickerInput1: '#DateSubmitted',
   datepickerInput2: '#DateAccepted',
   datepickerInput3: '#DateUserEntered_date',
-  
+  datepickerInput4: '#DueDate',
+  datepickerInput5: '#StartDate',
+   
   
   selectRandomPastDate(datepickerInput) {
     const currentDate = moment().startOf('day');

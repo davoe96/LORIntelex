@@ -20,3 +20,44 @@ Cypress.Commands.add('login', (username, password) => {
         }
     
   })
+  Cypress.Commands.add('mockSafeTopFunction', () => {
+    cy.on('window:before:load', (win) => {
+      win.Intelex = {
+        Util: {
+          Window: {
+            safeTop: () => ({
+              $: () => {},
+            }),
+          },
+        },
+      };
+    });
+  });
+  // support/commands.js
+
+Cypress.Commands.add('iframe', { prevSubject: 'element' }, ($iframe) => {
+  return $iframe.contents().find('body');
+});
+Cypress.Commands.add('waitForElementToDisappear', { prevSubject: true }, (subject) => {
+  const MAX_ATTEMPTS = 10;
+  let attempts = 0;
+
+  function checkElementExistence() {
+    attempts++;
+
+    if (attempts >= MAX_ATTEMPTS) {
+      throw new Error('Element did not disappear within the specified time.');
+    }
+
+    return cy.wrap(subject).should('not.exist').then(() => {
+      if (Cypress.$(subject).length === 0) {
+        return; // Element no longer exists in the DOM
+      }
+
+      // Element still exists, recursively check again after a short delay
+      return Cypress.Promise.delay(500).then(checkElementExistence);
+    });
+  }
+
+  return checkElementExistence();
+});
