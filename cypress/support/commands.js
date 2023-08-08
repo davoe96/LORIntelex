@@ -6,9 +6,6 @@ Cypress.Commands.add('login', (username, password) => {
         cy.get("form").contains('Log in').click();
 
     })
-    
-      
-      
         
         //cy.url ().should ('include','/LOR_AUSTest/Alliance')
         //cy.get('h1').should('contain', username)
