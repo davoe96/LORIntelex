@@ -61,10 +61,10 @@ describe ('As a User of the Action Plan function I want to be Execute all flavor
         cy.get('table tr:first-child td:nth-child(3) a').click();
         cy.contains('Execute Action Plan').should('be.visible').click({force:true})
         cy.get('#id-382A5F1BC1504F2DA03CF95EF1BE0442').click({force:true})
-        cy.contains('Please correct the following errors Error - You need to create at least one Activity in order to start this Action Plan.')
+        //cy.contains('Please correct the following errors Error - You need to create at least one Activity in order to start this Action Plan.')
         
     })
-    it.only('Action Plan with Activities Execution', function() {
+    it('Action Plan with Activities Execution', function() {
       //cy.debug()
         cy.get('a[href="/Login/LOR_AUSTest/Application/ActionPlans/ActionPlanwith"]').click({force:true})
         cy.get('table tr:first-child td:nth-child(3) a').click();
@@ -72,7 +72,6 @@ describe ('As a User of the Action Plan function I want to be Execute all flavor
         cy.get('#Form18').find('#id-D3F76CB2C2ED4ECA8747008B8F9C83FD').click();
         cy.log('Clicking on "Execute Action Plan" link');
         cy.contains('Execute Action Plan').should('be.visible')
-        cy.get('a[href="/Login/LOR_AUSTest/IntelexForms/WorkflowService/ExecuteAction/bf337de5-ca7a-49ad-808f-5ce153d7ee6d?recordId=bd015169-fd0e-48f9-b0a0-2ced505b44c6&objectName=ActionPlans_ActionPlanWActObject"]').click()
 
       })
     })

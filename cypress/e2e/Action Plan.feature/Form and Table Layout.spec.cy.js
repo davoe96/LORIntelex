@@ -110,8 +110,10 @@ describe ('As a User of the Action Plan function I want to be assured that the l
     cy.contains('Role Responsible').should('be.visible')
     cy.contains('Target Date').should('be.visible')
     cy.contains('Local Action Plans').should('be.visible')
-    cy.contains('Progress').should('be.visible')
-    cy.contains('Status').should('be.visible')
+    cy.contains('Progress').scrollIntoView().should('be.visible');
+    cy.contains('Status').scrollIntoView().should('be.visible');
+
+
   
   })
    it('Verify Table layout for Action Plan with Activities', function() {
@@ -126,8 +128,8 @@ describe ('As a User of the Action Plan function I want to be assured that the l
     cy.contains('Action Required').should('be.visible')
     cy.contains('Person Responsible').should('be.visible')
     cy.contains('Start Date').should('be.visible')
-    cy.contains('Activities Progress').should('be.visible')
-    cy.contains('Status').should('be.visible')
+    cy.contains('Activities Progress').scrollIntoView().should('be.visible')
+    cy.contains('Status').scrollIntoView().should('be.visible')
 
 })
 

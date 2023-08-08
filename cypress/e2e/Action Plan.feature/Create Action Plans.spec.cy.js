@@ -41,21 +41,6 @@ describe ('As a User of the Action Plan function I want to be Create all flavors
       
         // Other actions that need to be executed before each test...
         
-        // Additional lines you provided:
-        cy.get('#navbar--btn-Nav_Locations').click();
-        cy.get('#locations__search').type('TEST location do not use');
-        cy.contains('TEST location do not use').click();
-        cy.contains('TEST location do not use').should('be.visible');
-        cy.get('.search-container').type('Action').click();
-        cy.contains('Platform Applications').should('be.visible');
-        cy.wait(1000);
-        cy.contains('.menu-link', 'Action Plans').click();
-        cy.url().should('include', 'Login/LOR_AUSTest/Application/ActionPlans');
-        Cypress.on('uncaught:exception', (err, runnable) => {
-          // returning false here prevents Cypress from
-          // failing the test
-          return false;
-        });
       });
       it('Standalone Action Plans Creation', function() {
         cy.get('a[href="/Login/LOR_AUSTest/Application/ActionPlans/StandaloneActionPlans"]').click({force:true})
@@ -108,12 +93,21 @@ describe ('As a User of the Action Plan function I want to be Create all flavors
 })
 
     it('Global Action Plan Creation', function() {
+          // Click on the "Global Action" link
         cy.get('a[href="/Login/LOR_AUSTest/Application/ActionPlans/GlobalAction"]').click({force:true})
+         // Click on "Add Entry"   
         cy.contains('Add Entry').click({force:true})
+            // Ensure URL includes the expected path
         cy.url().should('include','ActionPlans/GlobalAction/Forms/ActionPlans_GlobActionPlan_Detail/Create')
+            // Verify page title
         cy.get('.breadcrumbs').contains('Global Action Plan').should('be.visible')
+            // Select a random option for CPARTypeID dropdown
         dropdownPage.selectRandomCPARTypeIDOption('CPARTypeID')
+        //Type in the the action required text
+        cy.contains('Action Required').type('This needs to be looked at as a top middle bottom priority!')
+            // Click "Select" to open the modal
         cy.contains('Select').filter('.entityselector-selectLink').click();
+        //Confirm the modal opens
         cy.get('.ui-dialog-title').contains('Select Role Responsible for Global Action Plan')
         cy.wait(1000)
 // Wait for the iframe to become visible
@@ -121,27 +115,34 @@ cy.get('iframe#selectorFrame').should('be.visible').then(($iframe) => {
     cy.wait(1000)
     // Switch context to the iframe body
     cy.wrap($iframe).iframe().as('iframeBody');
-
-    // Find and click the row checkbox (assuming you have the correct row selector)
-    cy.get('@iframeBody').find('tbody tr.data_row').eq(2).find('.td_selector input.rowSelector').click({force:true});
+ // Find and click the row checkbox (assuming you have the correct row selector) 
+ cy.get('@iframeBody').find('tbody tr.data_row').eq(2).find('.td_selector input.rowSelector').click();
 cy.wait(1000)
-cy.get('#dialog_select').click().wait(100).click({ force: true }); 
+// Click the "Select" button within the iframe
+cy.get('#dialog_select').click().wait(100).click(); 
+// Interact with other elements within the modal
 cy.get('.ui-state-hover').trigger('click')
-cy.get('.ui-widget-overlay.ui-front').waitForElementToDisappear();
-cy.get(datepickerPage.datepickerInput5).then(($input) => {
+// Submit the form
+cy.get('form').submit().wait(1000).submit()
+//Force a close
+cy.get('button.ui-dialog-titlebar-close').click();
+ cy.wait(1000)
+// Interact with datepicker and select a date
+  cy.get(datepickerPage.datepickerInput4).then(($input) => {
   cy.wait(1000)
   datepickerPage.selectRandomPastDate($input);
   cy.get('body').click();
   cy.wait(1000)
+// Select a random option for ReviewType dropdown
 dropdownPage.selectRandomReviewTypeOption('ReviewType');
 cy.contains('Continue').click()
-cy.url().should('include','Forms/ActionPlans_ActionPlanWAct_Detail/View/')
+cy.url().should('include','GlobalAction/Forms/ActionPlans_GlobActionPlan_Detail/View/')
 cy.contains('Exit').click()
 
 })
 })
 })
-
+})
   //cy.get('#navbar--btn-Nav_Locations').scrollIntoView()
 // Wait until the overlay is removed
 //cy.get('.ui-widget-overlay.ui-front').should('not.exist');

@@ -61,3 +61,10 @@ Cypress.Commands.add('waitForElementToDisappear', { prevSubject: true }, (subjec
 
   return checkElementExistence();
 });
+Cypress.Commands.add('iframeOnload', { prevSubject: 'element' }, ($iframe) => {
+  return new Cypress.Promise(resolve => {
+      $iframe.on('load', () => {
+          resolve($iframe.contents().find('body'));
+      });
+  });
+});

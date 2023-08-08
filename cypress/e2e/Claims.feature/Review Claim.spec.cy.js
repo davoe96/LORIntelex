@@ -58,7 +58,7 @@ describe ('Review Claim', () =>{
             cy.get('table tr:first-child td:nth-child(3) a').click();
             cy.url('Forms/ClaimsMgmt_InjuryClaim_Detail/View').should('include', 'InjuryClaim_Detail/View')
             //cy.get('a[href="/Login/LOR_AUSTest/Application/ClaimsMgmt/ReviewClaim/Forms/ClaimsMgmt_InjuryClaim_Detail/Create/f8fa40bd-12af-41a4-bf64-839164c6128e"]').click({force: true});
-            cy.get('#CloneActionLink41').click()
+            cy.get('#CloneActionLink42').click()
             cy.get('#save_action_link').click()
             cy.contains('Please correct the following errors Error - The save cannot be completed because of an existing record with the same ClaimNumber. Click here to see it.')
             cy.get('#CancelActionLink42').click()

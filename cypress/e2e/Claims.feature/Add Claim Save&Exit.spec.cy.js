@@ -60,7 +60,7 @@ describe ('Add New Claim', () =>{
     if (randomOptionValue === 'f82d040e-6ddc-4bbb-aecc-ef93bf934126') {
       // Handle the scenario for Option X (Employee)
       //cy.get('#fld_ConEmployerName.field-wrapper.skip-validate-hidden', { timeout: 5000 }).should('be.visible')
-      cy.contains('Employee Name').should('be.visible')
+      cy.contains('Employee Name').scrollIntoView().should('be.visible')
       //cy.contains('Clear').filter('.entityselector-clearLink').click();
       cy.contains('Assign to me').filter('.entityselector-assignToMeLink').click();     
       dropdownPage.selectRandomIsInsuredOption('IsInsured');
