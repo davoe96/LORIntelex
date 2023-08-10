@@ -2,7 +2,7 @@ import dropdownPage from '../pages/dropdown';
 import radioButtonPage from '../pages/radiobutton';
 
 
-describe ('As a user I want to successfully open the editor for an existing Sub Event, and validate the layout and exit', function(){
+describe ('As a user I want to successfully open the editor for an existing Environmental Sub Event, and validate the layout and exit', function(){
     describe ('Sub Master Editing', () =>{
       //This script enables the logged in session to be retained so all steps can go through the login on the first creation.
       this.beforeEach(function() {
@@ -33,8 +33,14 @@ describe ('As a user I want to successfully open the editor for an existing Sub 
 
       })
 
-      it('Successfully access the View page for an existing Sub Event and confirm page layout fixtures via the ID', function() {
-        cy.get('table tr:first-child td:nth-child(3) a').click();
+      it('Successfully access the View page for an Environmental existing Sub Event and confirm page layout fixtures via the ID', function() {
+        /* cy.get('tbody').contains('Environmental Incident')
+        cy.get('table tr:first-child td:nth-child(3) a').click(); */
+        cy.get('tbody')
+  .contains('Environmental Incident')
+  .parents('tr') // Assuming the row is the parent of the cell containing the text
+  .find('td:nth-child(3) a')
+  .click();
         cy.get('.breadcrumbs')
         cy.url('/Forms/EHSIncidentMang_EnvironIncidentDisabled_Detail/View/')
         cy.contains('Edit').should('be.visible')
@@ -48,17 +54,22 @@ describe ('As a user I want to successfully open the editor for an existing Sub 
         cy.contains('Related Incidents').should('be.visible')
         cy.contains('Private Document Attachment').should('be.visible')
         cy.contains('Exit').click()
-        cy.url('/Application/EHSIncidentMang/Incidents')
+        cy.url().should('include','/Application/EHSIncidentMang/Incidents')
       })
 
 
 
 
 
-      it('Successfully access the editor for an existing Sub Event Via the Pencil and confirm page layout fixtures', function() {
+      it('Successfully access the editor for an existing Environmental Sub Event Via the Pencil and confirm page layout fixtures', function() {
+         cy.get('tbody')
+  .contains('Environmental Incident')
+  .parents('tr') // Assuming the row is the parent of the cell containing the text
+  .find('td:nth-child(2) a')
+  .click();
         //Find the hyperlink element
         //cy.get('table tr:first-child td:nth-child(3) a').click();
-        cy.get('table tr:first-child td:nth-child(2) a').click()
+        //cy.get('table tr:first-child td:nth-child(2) a').click()
         console.log('Step 1: Starting the test...');
 
         cy.get('.breadcrumbs')
@@ -90,10 +101,14 @@ describe ('As a user I want to successfully open the editor for an existing Sub 
         cy.url('Login/LOR_AUSTest/Application/EHSIncidentMang/Incidents')
        })
 
-      it('Successfully access the editor for an existing Sub Event and edit some fields and save', function() {
+      it('Successfully access the editor for an existing Environmental Sub Event and edit some fields and save', function() {
         cy.url('Login/LOR_AUSTest/Application/EHSIncidentMang/Incidents')
-        cy.get('table tr:first-child td:nth-child(2) a').click()
-        cy.url('/Forms/EHSIncidentMang_Master_Detail/View/')
+        cy.get('tbody')
+        .contains('Environmental Incident')
+        .parents('tr') // Assuming the row is the parent of the cell containing the text
+        .find('td:nth-child(2) a')
+        .click();
+//        cy.url('/Forms/EHSIncidentMang_Master_Detail/View/')
         dropdownPage.selectRandomLocationOption('Location');
         dropdownPage.selectRandomSpecificLocationOption('Specific Location');
         cy.contains('Other Location').type('Ground Zero')
