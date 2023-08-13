@@ -16,8 +16,109 @@ const dropdownPage = {
    quotaDropdown: '#Quota',
   cparttypeidDropdown: '#CPARTypeID',
    reviewtypeDropdown: '#ReviewType',
+   vehicleincidentCharacteristicsDropdown: '#IncidentChar',
+   damagetoVehicleDropdown: '#DamagetoVehicle',
+   extentofDamageDropdown: '#ExtentofDamage',
+   weatheConditionDropdown: '#WeatheCondition',
+   roadConditionDropdown: '#RoadCondition',
+   visibilityDropdown: '#Visibility',
+   lightConditionsDropdown: '#LightConditions',
+   reportetoPoliceDropdown: '#ReportetoPolice',
+   damageTypeDropdown: '#DamageType',
+   ownerDropdown: '#Owner',
+
 // Add more selectors for other elements on this page
   // dropdownName: 'uniqueSelector'
+  selectRandomOwnerOption() {
+    cy.get(this.ownerDropdown).then(($select) => {
+      const options = $select.find('option');
+      const randomIndex = Math.floor(Math.random() * (options.length - 1)) + 1; // Exclude the first empty option
+      const randomOption = options[randomIndex];
+
+      cy.wrap($select).select(randomOption.value).should('have.value', randomOption.value);
+    });
+  },
+  selectRandomDamageTypeOption() {
+    cy.get(this.damageTypeDropdown).then(($select) => {
+      const options = $select.find('option');
+      const randomIndex = Math.floor(Math.random() * (options.length - 1)) + 1; // Exclude the first empty option
+      const randomOption = options[randomIndex];
+
+      cy.wrap($select).select(randomOption.value).should('have.value', randomOption.value);
+    });
+  },
+  selectRandomReportetoPoliceOption() {
+    cy.get(this.reportetoPoliceDropdown).then(($select) => {
+      const options = $select.find('option');
+      const randomIndex = Math.floor(Math.random() * (options.length - 1)) + 1; // Exclude the first empty option
+      const randomOption = options[randomIndex];
+
+      cy.wrap($select).select(randomOption.value).should('have.value', randomOption.value);
+    });
+  },
+  selectRandomLightConditionsOption() {
+    cy.get(this.lightConditionsDropdown).then(($select) => {
+      const options = $select.find('option');
+      const randomIndex = Math.floor(Math.random() * (options.length - 1)) + 1; // Exclude the first empty option
+      const randomOption = options[randomIndex];
+
+      cy.wrap($select).select(randomOption.value).should('have.value', randomOption.value);
+    });
+  },
+  selectRandomVisibilityOption() {
+    cy.get(this.visibilityDropdown).then(($select) => {
+      const options = $select.find('option');
+      const randomIndex = Math.floor(Math.random() * (options.length - 1)) + 1; // Exclude the first empty option
+      const randomOption = options[randomIndex];
+
+      cy.wrap($select).select(randomOption.value).should('have.value', randomOption.value);
+    });
+  },
+  selectRandomRoadConditionOption() {
+    cy.get(this.roadConditionDropdown).then(($select) => {
+      const options = $select.find('option');
+      const randomIndex = Math.floor(Math.random() * (options.length - 1)) + 1; // Exclude the first empty option
+      const randomOption = options[randomIndex];
+
+      cy.wrap($select).select(randomOption.value).should('have.value', randomOption.value);
+    });
+  },
+  selectRandomWeatheConditionOption() {
+    cy.get(this.weatheConditionDropdown).then(($select) => {
+      const options = $select.find('option');
+      const randomIndex = Math.floor(Math.random() * (options.length - 1)) + 1; // Exclude the first empty option
+      const randomOption = options[randomIndex];
+
+      cy.wrap($select).select(randomOption.value).should('have.value', randomOption.value);
+    });
+  },
+  selectRandomExtentofDamageOption() {
+    cy.get(this.extentofDamageDropdown).then(($select) => {
+      const options = $select.find('option');
+      const randomIndex = Math.floor(Math.random() * (options.length - 1)) + 1; // Exclude the first empty option
+      const randomOption = options[randomIndex];
+
+      cy.wrap($select).select(randomOption.value).should('have.value', randomOption.value);
+    });
+  },
+  selectRandomDamagetoVehicleOption() {
+    cy.get(this.damagetoVehicleDropdown).then(($select) => {
+      const options = $select.find('option');
+      const randomIndex = Math.floor(Math.random() * (options.length - 1)) + 1; // Exclude the first empty option
+      const randomOption = options[randomIndex];
+
+      cy.wrap($select).select(randomOption.value).should('have.value', randomOption.value);
+    });
+  },
+  selectRandomVehicleIncidentCharacteristicsOption() {
+    cy.get(this.vehicleincidentCharacteristicsDropdown).then(($select) => {
+      const options = $select.find('option');
+      const randomIndex = Math.floor(Math.random() * (options.length - 1)) + 1; // Exclude the first empty option
+      const randomOption = options[randomIndex];
+
+      cy.wrap($select).select(randomOption.value).should('have.value', randomOption.value);
+    });
+  },
   selectRandomReviewTypeOption() {
     cy.get(this.reviewtypeDropdown).then(($select) => {
       const options = $select.find('option');

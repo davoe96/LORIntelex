@@ -46,7 +46,7 @@ beforeEach(() => {
       cy.wait(1000); // Adjust the wait time as needed
       cy.contains('Initial Severity').should('be.visible')
       //Step 5: Select a random initial severity option from the dropdown
-      radioButtonPage.selectRandomRadioButton();
+      radioButtonPage.selectRandomSeverityRadioButton();
       cy.get('#Description ').type('Its an unspeakable situation medical environmental, property issues')
       cy.contains('Suspected Cause').type('Meteor shower')
       cy.contains('Immediate Action').type('evacuation and medical care')

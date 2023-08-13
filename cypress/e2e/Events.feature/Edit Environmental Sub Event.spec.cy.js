@@ -3,7 +3,7 @@ import radioButtonPage from '../pages/radiobutton';
 
 
 describe ('As a user I want to successfully open the editor for an existing Environmental Sub Event, and validate the layout and exit', function(){
-    describe ('Sub Master Editing', () =>{
+    describe ('Environmental Sub Master Editing', () =>{
       //This script enables the logged in session to be retained so all steps can go through the login on the first creation.
       this.beforeEach(function() {
        // cy.viewport(1280, 720); // Set the viewport to a desktop resolution (e.g., 1280x720)
@@ -111,17 +111,19 @@ describe ('As a user I want to successfully open the editor for an existing Envi
 //        cy.url('/Forms/EHSIncidentMang_Master_Detail/View/')
         dropdownPage.selectRandomLocationOption('Location');
         dropdownPage.selectRandomSpecificLocationOption('Specific Location');
-        cy.contains('Other Location').type('Ground Zero')
-        radioButtonPage.selectRandomRadioButton();
-        cy.contains('Suspected Cause').type('flooring')
-        cy.contains('Immediate Action').type('medical attention and repairs to floor')
+        cy.get('#LocationDesc').clear().type('Ground Zero')
+        radioButtonPage.selectRandomSeverityRadioButton();
+        cy.get('#SuspectedCause').clear().type('flooring')
+        cy.get('#ImmediateAction').clear().type('medical attention and repairs to floor')
         cy.contains('Spill/Release Details').should('be.visible')
         dropdownPage.selectRandomTypeOption('Type')
         cy.contains('External Reporting Details').should('be.visible')
         dropdownPage.selectRandomOutsideAgencyOption('OutsideAgency')
         dropdownPage.selectRandomInvestRequestedOption('InvestRequested')
-        cy.contains('Save & Exit').click()
-        cy.url('/EHSIncidentMang/Incidents/')
+        cy.get('#save_action_link').click()
+        cy.contains('Note: The environmental incident has been saved successfully.').should('be.visible')
+        cy.contains('Exit').click()
+        cy.url().should('include','Application/EHSIncidentMang/Incidents')
 
 
 

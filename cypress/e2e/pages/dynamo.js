@@ -2,6 +2,19 @@ const utils = require('../../support/utils/utils');
 
 const dynamoPage = {
   claimNumberDynamo: '#ClaimNumber',
+  polrecordNumberDynamo: '#PolrecordNumber',
+
+  enterRandomPolRecordNumberOption(selector, length) {
+    const randomString = utils.generateRandomString(length);
+    cy.get(selector).type(randomString);
+
+    // Custom assertion: Verify the input field contains the generated string
+    cy.get(selector).should('have.value', randomString);
+
+    // Custom assertion: Verify the input field is visible
+    cy.get(selector).should('be.visible');
+  },
+
 
   enterRandomClaimNumberOption(selector, length) {
     const randomString = utils.generateRandomString(length);
